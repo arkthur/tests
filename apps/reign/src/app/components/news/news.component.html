@@ -1,0 +1,17 @@
+<button (click)="seeAll()">All</button>
+
+<button (click)="seeMyFaves()">My faves</button>
+
+<br>
+
+<select name="subject" id="subject" (change)="selectedSubject($event)">
+  <option value="" disabled selected>Select your news</option>
+
+  <option value="angular">Angular</option>
+
+  <option value="react">ReactJS</option>
+
+  <option value="vue">VueJS</option>
+</select>
+
+<br>
