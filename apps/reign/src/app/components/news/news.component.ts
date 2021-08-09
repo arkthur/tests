@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Stories } from '../../models/story.model';
 import { DataService } from '../../services/data.service';
 
 @Component({
@@ -8,12 +9,12 @@ import { DataService } from '../../services/data.service';
   styleUrls: ['./news.component.scss']
 })
 export class NewsComponent implements OnInit {
-  data: unknown;
+  stories: Stories = [];
 
   constructor(private dataSvc: DataService) {}
 
   ngOnInit() {
-    this._getData('');
+    this._getStories('');
   }
 
   seeAll() {
@@ -25,10 +26,10 @@ export class NewsComponent implements OnInit {
   }
 
   async selectedSubject(subject: string) {
-    await this._getData(subject);
+    await this._getStories(subject);
   }
 
-  private async _getData(subject: string) {
-    this.data = await this.dataSvc.getData(subject);
+  private async _getStories(subject: string) {
+    this.stories = await this.dataSvc.getStories(subject);
   }
 }
