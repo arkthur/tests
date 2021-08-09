@@ -4,14 +4,14 @@
 
 <br>
 
-<select name="subject" id="subject" (change)="selectedSubject($event)">
+<select name="subject" #subject (change)="selectedSubject(subject.value)">
   <option value="" disabled selected>Select your news</option>
 
   <option value="angular">Angular</option>
 
-  <option value="react">ReactJS</option>
+  <option value="reactjs">ReactJS</option>
 
-  <option value="vue">VueJS</option>
+  <option value="vuejs">VueJS</option>
 </select>
 
 <br>
