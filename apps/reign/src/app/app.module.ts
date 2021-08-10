@@ -1,16 +1,19 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { NewsComponent } from './components/news/news.component';
+import { StoriesComponent } from './components/news/stories/stories.component';
+import { StoryComponent } from './components/news/stories/story/story.component';
+import { TimeAgoPipe } from './pipes/time-ago.pipe';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, NewsComponent],
+  declarations: [AppComponent, HeaderComponent, NewsComponent, StoriesComponent, StoryComponent, TimeAgoPipe ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot([], { initialNavigation: 'enabledBlocking' }),
+    RouterModule.forRoot([], { initialNavigation: 'enabledBlocking' })
   ],
   providers: [],
   bootstrap: [AppComponent],

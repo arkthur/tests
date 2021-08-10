@@ -16,7 +16,7 @@ export class DataService {
 
   private async _getData(subject: string): Promise<Data> {
     const res = await fetch(this._getURL(subject), { method: 'get' });
-    const data = await res.json() as Data;
+    const data = (await res.json()) as Data;
     return data;
   }
 
@@ -26,6 +26,13 @@ export class DataService {
   }
 
   private _dataToStories(data: Data): Stories {
-    return data.hits.map<Story>(s => new Story(s));
+    return this._filterMissingDataStories(data.hits).map<Story>((s) => new Story(s));
+  }
+
+  private _filterMissingDataStories(hits: StoryHits): StoryHits {
+    return hits.filter(
+      ({ story_id, story_title, story_url, author, created_at }) =>
+        story_id && story_title && story_url && author && created_at
+    );
   }
 }
