@@ -1,6 +1,37 @@
 .Front-End-Test---Home-view {
   width: 100%;
   height: 100%;
-  padding: 0 0 98px;
+  padding: 70px 0px 98px;
   background-color: #fcfcfc;
+  margin-top: 118px;
+}
+
+@media only screen and (min-width: 600px) {
+  .Front-End-Test---Home-view {
+    width: 100%;
+    height: 100%;
+    padding: 70px 50px 98px;
+    background-color: #fcfcfc;
+    margin-top: 118px;
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  .Front-End-Test---Home-view {
+    width: 100%;
+    height: 100%;
+    padding: 70px 100px 98px;
+    background-color: #fcfcfc;
+    margin-top: 118px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .Front-End-Test---Home-view {
+    width: 100%;
+    height: 100%;
+    padding: 70px 150px 98px;
+    background-color: #fcfcfc;
+    margin-top: 118px;
+  }
 }

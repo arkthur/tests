@@ -1,11 +1,11 @@
-<div class="story-card">
-  <p>
+<div class="story-card" (click)="openURL(story?.url)">
+  <p style="display: flex; align-items: center;">
     <img src="../../../../../assets/iconmonstr-time-2.svg" class="iconmonstr-time-2">
 
     <span class="date-and-author">{{ story?.creationDate | timeAgo }} by {{ story?.author }}</span>
   </p>
 
-  <p>
+  <p style="height: 3em;">
     <span class="title">{{ story?.title }}</span>
   </p>
 </div>

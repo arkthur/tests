@@ -9,4 +9,8 @@ import { Story } from '../../../../models/story.model';
 })
 export class StoryComponent {
   @Input() story: Story | null = null;
+
+  openURL(url: string | undefined) {
+    window.open(url);
+  }
 }

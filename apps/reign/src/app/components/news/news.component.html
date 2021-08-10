@@ -1,10 +1,12 @@
-<button (click)="seeAll()">All</button>
+<div style="display: flex; justify-content: center;">
+  <button (click)="seeAll()">All</button>
 
-<button (click)="seeMyFaves()">My faves</button>
+  <button (click)="seeMyFaves()">My faves</button>
+</div>
 
 <br>
 
-<select name="subject" #subject (change)="selectedSubject(subject.value)" [value]="selectedOption">
+<select name="subject" #subject (change)="selectedSubject(subject.value)" [value]="selectedOption" style="margin-left: 8px">
   <option value="">{{ defaultOption }}</option>
 
   <option value="angular">Angular</option>
