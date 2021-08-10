@@ -1,3 +1,9 @@
 <div class="flex-container">
-  <tests-story *ngFor="let story of stories" [story]="story" class="column"></tests-story>
+  <tests-story
+    class="column"
+    *ngFor="let story of stories"
+    [story]="story"
+    [liked]="likes.includes(story.id)"
+    (liking)="like(story.id)"
+  ></tests-story>
 </div>
