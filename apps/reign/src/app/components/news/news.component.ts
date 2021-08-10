@@ -12,6 +12,7 @@ export class NewsComponent implements OnInit {
   defaultOption = 'Select your news';
   selectedOption: string;
   stories: Stories = [];
+  private _allStories: Stories = [];
 
   constructor(private dataSvc: DataService) {
     this.selectedOption = localStorage.getItem('filter') ?? '';
@@ -22,11 +23,12 @@ export class NewsComponent implements OnInit {
   }
 
   seeAll() {
-    // TODO
+    this.stories = this._allStories;
   }
 
   seeMyFaves() {
-    // TODO
+    const likes = JSON.parse(localStorage.getItem('likes') as string);
+    this.stories = this._allStories.filter((s) => likes.includes(s.id));
   }
 
   async selectedSubject(subject: string) {
@@ -37,5 +39,6 @@ export class NewsComponent implements OnInit {
 
   private async _getStories(subject: string) {
     this.stories = await this.dataSvc.getStories(subject);
+    this._allStories = this.stories;
   }
 }
