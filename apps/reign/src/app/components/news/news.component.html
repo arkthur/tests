@@ -6,7 +6,7 @@
 
 <br>
 
-<select name="subject" #subject (change)="selectedSubject(subject.value)" [value]="selectedOption" style="margin-left: 8px">
+<select name="subject" #subject (change)="changeSubject(subject.value)" [value]="selectedOption" style="margin-left: 8px">
   <option value="">{{ defaultOption }}</option>
 
   <option value="angular">Angular</option>
@@ -19,3 +19,7 @@
 <br>
 
 <tests-stories [stories]="stories"></tests-stories>
+
+<br>
+
+<tests-paginator [pagesCount]="pagesCount" (changingPage)="changePage($event)" *ngIf="paginatorReady"></tests-paginator>

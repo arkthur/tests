@@ -1,0 +1,21 @@
+<div style="display: flex; justify-content: center">
+  <button class="page-button" (click)="openFirst()">|{{ '\<' }}</button>
+
+  <button class="page-button" (click)="openPrevious()">{{ '\<' }}</button>
+
+  <ng-container *ngIf="ready">
+    <button
+      [class]="
+        page.index === activePageIndex ? 'selected-page-button' : 'page-button'
+      "
+      *ngFor="let page of pages"
+      (click)="openPage(page.index)"
+    >
+      {{ page.name }}
+    </button>
+  </ng-container>
+
+  <button class="page-button" (click)="openNext()">{{ '>' }}</button>
+
+  <button class="page-button" (click)="openLast()">{{ '>' }}|</button>
+</div>

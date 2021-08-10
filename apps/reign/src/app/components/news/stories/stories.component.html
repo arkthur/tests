@@ -4,6 +4,6 @@
     *ngFor="let story of stories"
     [story]="story"
     [liked]="likes.includes(story.id)"
-    (liking)="like(story.id)"
+    (liking)="like($event)"
   ></tests-story>
 </div>

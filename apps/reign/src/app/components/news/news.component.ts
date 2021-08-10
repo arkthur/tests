@@ -12,6 +12,9 @@ export class NewsComponent implements OnInit {
   defaultOption = 'Select your news';
   selectedOption: string;
   stories: Stories = [];
+  pagesCount = 0;
+  selectedPageIndex = 0;
+  paginatorReady = false;
   private _allStories: Stories = [];
 
   constructor(private dataSvc: DataService) {
@@ -19,7 +22,7 @@ export class NewsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._getStories(this.selectedOption);
+    this._getStories(this.selectedOption, this.selectedPageIndex);
   }
 
   seeAll() {
@@ -31,14 +34,23 @@ export class NewsComponent implements OnInit {
     this.stories = this._allStories.filter((s) => likes.includes(s.id));
   }
 
-  async selectedSubject(subject: string) {
-    await this._getStories(subject);
+  async changeSubject(subject: string) {
+    await this._getStories(subject, this.selectedPageIndex);
     this.defaultOption = 'All';
     localStorage.setItem('filter', subject);
+    this.selectedOption = subject;
   }
 
-  private async _getStories(subject: string) {
-    this.stories = await this.dataSvc.getStories(subject);
+  async changePage(index: number) {
+    await this._getStories(this.selectedOption, index);
+    this.selectedPageIndex = index;
+  }
+
+  private async _getStories(subject: string, page: number) {
+    const dataStories = await this.dataSvc.getStories(subject, page);
+    this.stories = dataStories.stories;
+    this.pagesCount = dataStories.pagesCount;
+    this.paginatorReady = true;
     this._allStories = this.stories;
   }
 }
