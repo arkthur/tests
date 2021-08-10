@@ -4,8 +4,8 @@
 
 <br>
 
-<select name="subject" #subject (change)="selectedSubject(subject.value)">
-  <option value="" disabled selected>Select your news</option>
+<select name="subject" #subject (change)="selectedSubject(subject.value)" [value]="selectedOption">
+  <option value="">{{ defaultOption }}</option>
 
   <option value="angular">Angular</option>
 
